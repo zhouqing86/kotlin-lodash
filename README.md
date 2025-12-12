@@ -16,7 +16,7 @@ Add the dependency to your `build.gradle.kts`:
 
 ```kotlin
 dependencies {
-    implementation("io.github.zhouqing86:kotlin-lodash:0.0.1")
+    implementation("io.github.zhouqing86:kotlin-lodash:0.0.2")
 }
 ```
 
@@ -175,6 +175,49 @@ val list = listOf(
     mapOf("id" to 2, "name" to "Bob")
 )
 val firstName = get(list, "[0].name")  // "Alice"
+
+// Pick - Select specific keys from a map
+val person = mapOf("name" to "John", "age" to 30, "email" to "john@example.com")
+val basic = pick(person, "name", "age")
+// Result: {"name" -> "John", "age" -> 30}
+
+// PickBy - Select entries that match a predicate
+val scores = mapOf("math" to 95, "english" to 78, "science" to 88)
+val highScores = pickBy(scores) { _, value -> (value as Int) > 80 }
+// Result: {"math" -> 95, "science" -> 88}
+
+// Omit - Exclude specific keys from a map
+val excluded = omit(person, "email")
+// Result: {"name" -> "John", "age" -> 30}
+
+// OmitBy - Exclude entries that match a predicate
+val filtered = omitBy(scores) { _, value -> (value as Int) < 80 }
+// Result: {"math" -> 95, "science" -> 88}
+
+// Keys, Values, Entries
+val keys = keys(person)  // ["name", "age", "email"]
+val values = values(person)  // ["John", 30, "john@example.com"]
+val entries = entries(person)  // [("name", "John"), ("age", 30), ("email", "john@example.com")]
+
+// MapValues - Transform all values
+val doubled = mapValues(scores) { _, value -> (value as Int) * 2 }
+// Result: {"math" -> 190, "english" -> 156, "science" -> 176}
+
+// MapKeys - Transform all keys
+val upperKeys = mapKeys(person) { key, _ -> key.uppercase() }
+// Result: {"NAME" -> "John", "AGE" -> 30, "EMAIL" -> "john@example.com"}
+
+// Has - Check if path exists
+val hasCity = has(data, "user.address.city")  // true
+val hasPhone = has(data, "user.phone")  // false
+
+// Invert - Swap keys and values
+val inverted = invert(mapOf("a" to "1", "b" to "2"))
+// Result: {"1" -> "a", "2" -> "b"}
+
+// InvertBy - Group keys by transformed values
+val grouped = invertBy(mapOf("a" to "x", "b" to "x", "c" to "y")) { it.toString() }
+// Result: {"x" -> ["a", "b"], "y" -> ["c"]}
 ```
 
 ## Platform Support

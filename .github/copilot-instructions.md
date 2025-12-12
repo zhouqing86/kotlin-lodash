@@ -176,3 +176,38 @@ fun `newFunction - handles edge cases`() {
 - All new code should follow the Kotlin Multiplatform common source set structure
 - All utilities are top-level functions in the `lodash` package
 - `Lodash.kt` file exists but is empty - all functions are in category-specific files
+
+## Release Notes for v0.0.1
+- Initial release of the Kotlin Lodash library
+- Features:
+  - Array/List utilities: `chunk`, `compact`, `concat`, `difference`, `differenceBy`, `drop`, `dropRight`, `take`, `takeRight`, `uniq`, `uniqBy`, `flattenDeep`
+  - String utilities: `camelCase`, `kebabCase`, `snakeCase`, `upperFirst`, `lowerFirst`, `padStart`, `padEnd`, `truncate`, `trim`
+  - Type checking: `isEmpty`, `isNotEmpty`, `isNull`, `isNotNull`
+  - Number utilities: `clamp` (Int, Long, Double overloads), `inRange`, `random`
+  - Functional utilities: `times` (with and without return values), `range`
+  - Deep operations: `cloneDeep` (supports List, Array, Map, Set)
+- Platform support:
+  - JVM (with JUnit 5 for tests)
+  - JavaScript (IR)
+  - WebAssembly (WASM JS)
+  - Linux (x64)
+  - Windows (mingw x64)
+  - macOS (x64 and ARM64)
+  - iOS (ARM64, Simulator ARM64, x64)
+- Installation: Add the dependency to your `build.gradle.kts` file and sync the project.
+- Acknowledgments: Thanks to the Kotlin team and the open-source community for their support and contributions.
+
+## Release Notes for v0.0.2
+- **New Object Manipulation Utilities** added in [`src/commonMain/kotlin/lodash/Object.kt`](src/commonMain/kotlin/lodash/Object.kt):
+  - `pick` - Create a new map containing only specified keys from the source map
+  - `pickBy` - Create a new map with entries that pass a predicate function
+  - `omit` - Create a new map excluding specified keys
+  - `omitBy` - Create a new map excluding entries that pass a predicate function
+  - `keys` - Extract all keys from a map as a list of strings
+  - `values` - Extract all values from a map as a list
+  - `entries` - Convert a map to a list of key-value pairs
+  - `mapValues` - Transform all values in a map using a transform function
+  - `mapKeys` - Transform all keys in a map using a transform function
+  - `has` - Check if a path exists in an object/map structure
+  - `invert` - Swap keys and values in a map (1-to-1 mapping)
+  - `invertBy` - Group keys by their transformed values (1-to-many mapping)
