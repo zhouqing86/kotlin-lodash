@@ -6,38 +6,48 @@ Thank you for considering contributing to Kotlin Lodash! We welcome contribution
 
 ## How to Contribute
 
-1. **Fork the Repository**: Start by forking the repository on GitHub. This will create a copy of the project under your GitHub account.
+All contributions should be made via **Pull Requests from a forked repository**. Direct pushes to the main repository are not permitted.
 
-2. **Clone Your Fork**: Clone your forked repository to your local machine using:
+### Fork and Clone Workflow
+
+1. **Fork the Repository**: Fork the repository on GitHub to create a copy under your GitHub account.
+
+2. **Clone Your Fork**: Clone your forked repository to your local machine:
    ```
    git clone https://github.com/your-username/kotlin-lodash.git
+   cd kotlin-lodash
    ```
 
-3. **Create a Branch**: Create a new branch for your feature or bug fix:
+3. **Add Upstream Remote** (optional): Track the original repository for staying updated:
+   ```
+   git remote add upstream https://github.com/zhouqing86/kotlin-lodash.git
+   ```
+
+4. **Create a Feature Branch**: Create a new branch in your forked repository for your work:
    ```
    git checkout -b feature/your-feature-name
    ```
 
-4. **Make Your Changes**: Implement your changes in the codebase. Ensure that your code adheres to the project's coding standards.
+5. **Make Your Changes**: Implement your changes following the project's coding standards and guidelines.
 
-5. **Write Tests**: If applicable, write tests for your changes to ensure that they work as expected and do not break existing functionality.
+6. **Write Tests**: Add comprehensive tests for your changes in test file for instance `src/commonTest/kotlin/lodash/ObjectTest.kt`.
 
-6. **Run Tests**: Run the existing tests to verify that everything is working correctly:
+7. **Run Tests**: Verify that all tests pass:
    ```
    ./gradlew test
    ```
 
-7. **Commit Your Changes**: Commit your changes with a clear and descriptive commit message:
+8. **Commit Your Changes**: Commit with clear, descriptive messages:
    ```
-   git commit -m "Add feature: your feature description"
+   git commit -m "Add feature: description"
    ```
 
-8. **Push to Your Fork**: Push your changes to your forked repository:
+9. **Push to Your Fork**: Push your branch to your forked repository:
    ```
    git push origin feature/your-feature-name
    ```
 
-9. **Create a Pull Request**: Go to the original repository and create a pull request from your branch. Provide a clear description of your changes and why they should be merged.
+10. **Create a Pull Request**: Open a Pull Request from your fork to the main repository. Provide a clear description of your changes and their purpose.
 
 ## Code of Conduct
 
@@ -45,7 +55,7 @@ Please adhere to our [Code of Conduct](CODE_OF_CONDUCT.md) in all interactions r
 
 ## Issues
 
-If you encounter any issues or have suggestions for improvements, please open an issue in the GitHub repository.
+If you encounter any issues or have suggestions, please open an issue in the GitHub repository.
 
 ## Thank You!
 
