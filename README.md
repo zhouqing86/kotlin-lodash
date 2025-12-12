@@ -8,14 +8,16 @@ To include kotlin-lodash in your project, add the following dependency to your `
 
 ```kotlin
 dependencies {
-    implementation("lodash.kotlin:kotlin-lodash:1.0.0")
+    implementation("lodash.kotlin:kotlin-lodash:0.0.1)
 }
 ```
 
 ## Usage
 
 ```kotlin
-val trimmedString = Lodash.trim("  Hello, World!  ")
+import lodash.trim
+
+val trimmedString = trim("  Hello, World!  ")
 println(trimmedString) // Output: "Hello, World!"
 ```
 

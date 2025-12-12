@@ -4,15 +4,23 @@
 This is a Kotlin Multiplatform library that provides lodash-like utility functions for common programming tasks. The project uses Kotlin 2.0.21 and targets multiple platforms including JVM, JS, WASM, Linux, Windows, macOS, and iOS.
 
 ## Project Structure
-- **Main source**: `src/commonMain/kotlin/lodash/utils/Lodash.kt` - Contains all utility functions
-- **Tests**: `src/commonTest/kotlin/lodash/utils/LodashTest.kt` - Comprehensive test suite using Kotlin Test
+- **Main source**: `src/commonMain/kotlin/lodash/` - Utility functions organized by category
+  - `List.kt` - Array and list operations
+  - `String.kt` - String manipulation functions
+  - `Number.kt` - Number utilities
+  - `Type.kt` - Type checking functions
+  - `Functional.kt` - Functional programming utilities
+  - `Deep.kt` - Deep cloning and collection operations
+  - `Object.kt` - Object manipulation utilities
+- **Tests**: `src/commonTest/kotlin/lodash/LodashTest.kt` - Comprehensive test suite using Kotlin Test
 - **Build**: `build.gradle.kts` - Kotlin Multiplatform configuration with Dokka documentation
-- **Package**: `lodash.utils` namespace
+- **Package**: `lodash` (not `lodash.utils`)
 
 ## Code Style Guidelines
 
 ### Function Naming and Organization
-- All utility functions are **top-level functions** in the `lodash.utils` package
+- All utility functions are **top-level functions** in the `lodash` package
+- Functions are organized by category into separate files (List.kt, String.kt, Number.kt, etc.)
 - Use **camelCase** for function names (e.g., `camelCase`, `kebabCase`, `cloneDeep`)
 - Provide multiple overloads where appropriate (e.g., `chunk` for both `List` and `Array`)
 - Functions should be pure and side-effect-free when possible
@@ -33,7 +41,7 @@ This is a Kotlin Multiplatform library that provides lodash-like utility functio
 ## Testing Guidelines
 
 ### Test Structure
-- **Test class**: `LodashTest` in `src/commonTest/kotlin/lodash/utils/`
+- **Test class**: `LodashTest` in `src/commonTest/kotlin/lodash/`
 - Use **kotlin.test** framework (not JUnit directly in common tests)
 - Test naming: Use backticks with descriptive names (e.g., `` `chunk - basic usage` ``)
 - Group related test cases using descriptive function names
@@ -124,8 +132,8 @@ fun clamp(number: Double, lower: Double, upper: Double): Double
 
 When adding a new utility function:
 
-1. **Add the function** to `src/commonMain/kotlin/lodash/utils/Lodash.kt`
-2. **Write comprehensive tests** in `src/commonTest/kotlin/lodash/utils/LodashTest.kt`
+1. **Add the function** to the appropriate category file in `src/commonMain/kotlin/lodash/` (e.g., `List.kt` for list operations, `String.kt` for string functions)
+2. **Write comprehensive tests** in `src/commonTest/kotlin/lodash/LodashTest.kt`
 3. **Test edge cases**: null values, empty collections, boundary conditions
 4. **Use descriptive test names** with backticks
 5. **Follow existing patterns** for similar functions
@@ -133,7 +141,9 @@ When adding a new utility function:
 
 ### Example Template
 ```kotlin
-// In Lodash.kt
+// In String.kt (or appropriate category file)
+package lodash
+
 fun newFunction(input: String): String {
     require(input.isNotEmpty()) { "Input must not be empty" }
     // implementation
@@ -155,11 +165,14 @@ fun `newFunction - handles edge cases`() {
 ## Version and Publishing
 - Version is stored in `version.txt` (currently `0.0.1-SNAPSHOT`)
 - Uses `com.vanniktech.maven.publish` plugin for publishing
-- Group ID: `lodash.utils`
-- Artifact ID: `kotlin-lodash`
+- Group ID: `io.github.zhouqing86` (defined in `gradle.properties`)
+- Artifact ID: `kotlin-lodash` (defined in `gradle.properties`)
+- Group is set via `project.property("GROUP")` in `build.gradle.kts`
+- Publish to local Maven: `./gradlew publishToMavenLocal`
 
 ## Important Notes
 - The old `src/main/kotlin/com/kotlinlodash/` structure is legacy and should not be used
-- Current active code is in `src/commonMain/kotlin/lodash/utils/`
+- Current active code is in `src/commonMain/kotlin/lodash/` (organized by category)
 - All new code should follow the Kotlin Multiplatform common source set structure
-- The `Lodash` object in `src/main/kotlin/com/kotlinlodash/Lodash.kt` is empty and superseded by top-level functions
+- All utilities are top-level functions in the `lodash` package
+- `Lodash.kt` file exists but is empty - all functions are in category-specific files
