@@ -4,7 +4,7 @@ plugins {
     id("com.vanniktech.maven.publish") version "0.29.0"
 }
 
-group = rootProject.group
+group = project.property("GROUP") as String
 version = providers.fileContents(layout.projectDirectory.file("version.txt"))
     .asText
     .get()
@@ -15,7 +15,6 @@ repositories {
 }
 
 kotlin {
-    // 覆盖几乎所有主流平台
     jvm()
     js(IR) { browser() }
     wasmJs { browser() }
@@ -49,7 +48,6 @@ kotlin {
         }
     }
 
-    // Dokka 生成漂亮文档
     tasks.dokkaHtml {
         outputDirectory.set(file("$buildDir/dokka"))
     }

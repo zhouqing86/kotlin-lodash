@@ -1,4 +1,6 @@
-package lodash.utils
+package lodash
+
+import kotlin.collections.get
 
 fun <T> chunk(list: List<T>, size: Int): List<List<T>> {
     require(size > 0) { "Size must be positive" }

@@ -1,5 +1,7 @@
-package lodash.utils
+package lodash
 
+import kotlin.collections.get
+import kotlin.math.floor
 import kotlin.test.Test
 import kotlin.test.assertEquals
 import kotlin.test.assertFalse
@@ -50,7 +52,7 @@ class LodashTest {
         val list2 = listOf(4.4, 2.5)
         assertEquals(
             listOf(1.2, 3.3),
-            differenceBy(list1, list2) { kotlin.math.floor(it).toInt() }
+            differenceBy(list1, list2) { floor(it).toInt() }
         )
     }
 
@@ -74,7 +76,7 @@ class LodashTest {
 
         assertEquals(
             listOf(1.1, 5.5),
-            differenceBy(base, exclude1, exclude2) { kotlin.math.floor(it).toInt() }
+            differenceBy(base, exclude1, exclude2) { floor(it).toInt() }
         )
     }
 

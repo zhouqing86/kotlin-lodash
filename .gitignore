@@ -73,3 +73,5 @@ replay_pid*
 # Spring Boot
 application-local.yml
 application-local.properties
+
+tmp
